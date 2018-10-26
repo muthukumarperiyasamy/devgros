@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Connect with Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div class="contact-description">
+    <p>
+      Working hours Mon-Sat 9:30 AM - 9:00 PM
+    </p>
+    <P>We give quick response to your E-mail within a day.</P>
+  </div>
+  <ion-row class="contact-details-row">
+    <ion-col col-8>
+      <h4 class="contact-name">For Investors</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-icon name="mail" (click)="Investors()"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="contact-details-row">
+    <ion-col col-8>
+      <h4 class="contact-name">For Advertisement</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-icon name="call" (click)="call(8190883938)"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="contact-details-row">
+    <ion-col col-8>
+      <h4 class="contact-name">To add your shop</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-icon name="mail" (click)="addshop()"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="contact-details-row">
+    <ion-col col-8>
+      <h4 class="contact-name">Payment Queries</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-icon name="call" (click)="call(8190883938)"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="contact-details-row">
+    <ion-col col-8>
+      <h4 class="contact-name">General Enquiry</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-icon name="mail" (click)="Enquiry()"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+
+<!-- <div class="button-bar">
+    <button ion-button clear (click)="openInAppBrowser(contact.website)">
+      <ion-icon name="globe" Style="color:green"></ion-icon>
+    </button>
+    <button ion-button clear (click)="openInAppBrowser(contact.facebook)">
+      <ion-icon name="logo-facebook" Style="color:blue"></ion-icon>
+    </button>
+    <button ion-button clear (click)="openInAppBrowser(contact.youtube)">
+      <ion-icon name="logo-youtube" Style="color:red"></ion-icon>
+    </button>
+</div> -->
+
+
+<!-- <ion-icon name="globe" (click)="InAppBrowser()"></ion-icon> -->
+<!-- <ion-icon name="call" (click)="call(9876543210)"></ion-icon> -->
+<!-- <ion-icon name="mail" (click)="sendMail3()"></ion-icon> -->
+
+<!-- <p class="contact-description">
+        Mon-Sat 9:30 am to 11:30 pm
+      </p> -->

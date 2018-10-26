@@ -1,0 +1,36 @@
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>otppage</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content text-center class="otp" padding>
+    <form [formGroup]="logina" (ngSubmit)="confirm()" novalidate>
+  <h6 style="padding-top:166px">Verify Your Phone number to make sure your Account Remains Safe.</h6>
+  <div class="login-box">
+    <ion-row>
+         <ion-item>
+            <ion-input  name=Otp type="text" placeholder="Enter your OTP" formControlName="otp"></ion-input>
+          </ion-item>
+         <h2>  </h2>         
+    </ion-row>
+
+  </div>
+  <!-- <h6>Not Received 4 digit OTP? -->
+  <!-- <a>Resend OTP</a></h6> -->
+  <ion-row responsive-sm>
+    <ion-col >
+      <button ion-button block round [disabled]="!logina.valid"(click)="confirm()">Confirm OTP</button>
+    </ion-col>
+  </ion-row>
+</form>
+  <!-- <ion-grid style="height: 100%">
+  <ion-row justify-content-center align-items-center style="height: 100%">
+    Hello world!
+  </ion-row>
+</ion-grid> -->
+
+</ion-content>

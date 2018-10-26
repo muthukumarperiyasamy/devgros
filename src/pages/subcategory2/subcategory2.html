@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{ this.sbcategory }} </ion-title>
+      <ion-buttons end>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar [(ngModel)]="terms" class="light-searchbar"></ion-searchbar>
+      </ion-col>
+      <!-- <ion-col col-1>
+        <ion-icon (click)="filter()" style="font-size:32px;padding-top:15px" color="button-color" name="ios-funnel"></ion-icon>
+      </ion-col> -->
+    </ion-row>
+    <ion-list>
+      <ion-item>
+        <ion-row *ngFor="let p of products | search : terms ">
+          <ion-col col-2>
+            <img src="{{p.image_url}}">
+            <!-- </ion-thumbnail> -->
+          </ion-col>
+          <ion-col col-7>
+            <h6 style="margin-bottom:0;margin-top:15px;margin-left:5px;" text-wrap>
+              <b>{{p.product}}</b>
+            </h6>
+            <!-- <p style="margin-bottom:0;margin-top:0;margin-left:5px;">{{p.sub_category}}</p> -->
+          </ion-col>
+          <ion-col col-3>
+            <button class="buttona" item-end style="display:inline-flex;height:2.6rem" ion-button small block round (click)="addProduct(p)">{{p.inshop}}</button>
+            <!-- *ngIf="p.disabled ? hidden : show"   -->
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+     <ion-infinite-scroll-content></ion-infinite-scroll-content>
+   </ion-infinite-scroll> -->
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-grid no-margin no-padding>
+        <ion-row no-margin no-padding>
+          <ion-col text-center>
+            <button ion-button block icon-left (click)="update()">
+              <ion-icon name="md-cloud-upload"></ion-icon>
+              <b>Update shop list</b>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>

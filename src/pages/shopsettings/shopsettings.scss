@@ -1,0 +1,38 @@
+page-shopsettings {
+        ion-input{       
+            border-bottom: 1px solid $theme-color-3 !important;
+         }
+         ion-card-header{
+            //  margin-top:15px;
+             background-color:$theme-color-1; //$grey;
+         }
+         
+         .card{
+             margin: 10px 10px 25px 10px;
+         }
+         .card-header{
+            color:$white;
+            font-weight: 800;
+            padding:8px;
+            
+         }
+         .card-content{
+            padding-top:8px !important;
+
+         }
+         .toggle{
+            //  align-items: center;
+            //  align-content: center;
+             justify-content: center;
+        }
+        .button-block {
+        margin: 0 auto;
+        width: 70%; 
+        background-color: $theme-color-3;
+        .button-inner
+           {
+               text-align: justify;
+           }
+}
+
+}

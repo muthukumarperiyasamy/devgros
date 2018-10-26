@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="add">
+  <ion-item>
+    <!-- <ion-label floating>Product Name</ion-label> -->
+    <ion-input type="text" [(ngModel)]="productname"   placeholder="Product Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <!-- <ion-label floating>Product Name</ion-label> -->
+    <ion-input type="text" [(ngModel)]="subcategory" (ionFocus)="category()" placeholder="Select Category"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>select type</ion-label>
+    <ion-select [(ngModel)]="weight">
+      <!-- <ion-option >select</ion-option> -->
+      <ion-option checked="true" >unit/packet</ion-option>
+      <ion-option>Ml/litres</ion-option>
+      <ion-option>grams/kilograms</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="this.weight != 'unit/packet'">
+    <ion-textarea rows="4" [(ngModel)]="volume" type="text" placeholder="Eg:50 gm, 100 gm, 250 gm, 500 gm, 1 kg, 2 kg, 5 kg"></ion-textarea>
+    <!--  <ion-label>unit</ion-label>
+    <ion-select [(ngModel)]="volume" multiple="true">
+      <ion-option>50 ml</ion-option>
+      <ion-option>100 ml</ion-option>
+      <ion-option>150 ml</ion-option>
+      <ion-option>200 ml</ion-option>
+      <ion-option>250 ml</ion-option>
+      <ion-option>500 ml</ion-option>
+      <ion-option>750 ml</ion-option>
+      <ion-option>01 lit</ion-option>
+      <ion-option>02 lit</ion-option>
+      <ion-option>05 lit</ion-option>
+      <ion-option>10 lit</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="this.weight =='grams/kilograms'">
+    <ion-label>unit</ion-label>
+    <ion-select [(ngModel)]="volume" multiple="true">
+      <ion-option>50 gm</ion-option>
+      <ion-option>100 gm</ion-option>
+      <ion-option>150 gm</ion-option>
+      <ion-option>200 gm</ion-option>
+      <ion-option>250 gm</ion-option>
+      <ion-option>500 gm</ion-option>
+      <ion-option>750 gm</ion-option>
+      <ion-option>01 kg</ion-option>
+      <ion-option>02 kg</ion-option>
+      <ion-option>05 kg</ion-option>
+      <ion-option>10 kg</ion-option>
+    </ion-select> -->
+  </ion-item>
+  <!-- <ion-item> -->
+    <ion-row>
+      <ion-col col-9>
+        <img [src]="base64Image" width="200" height="200" *ngIf="base64Image" />
+      </ion-col>
+      <ion-col col-3>
+        <div card (click)="presentActionSheet()">
+          <preload-image class="user-image" [ratio]="{w:1, h:1}" src="./assets/images/camera.png" alt="Profile img"></preload-image>
+        </div>
+      </ion-col>
+    </ion-row>
+ 
+  <!-- </ion-item> -->
+  <button ion-button block round class="submit-button" type="submit" (click)="update()">Add product</button>
+
+</ion-content>

@@ -1,0 +1,107 @@
+page-home {
+    .contact-slides
+    {
+        height: 35%;
+
+        ion-slide.contact-slide
+        {
+            
+            .slide-zoom
+            {
+                height: 100%;
+            }
+        }
+
+        .slide-image
+        {
+            width: 100%;
+
+        }
+        .swiper-pagination
+        {
+            .swiper-pagination-bullet
+            {
+                opacity: 1;
+                background: white;
+                width: 10px;
+                height: 10px;
+            }
+
+            .swiper-pagination-bullet-active
+            {
+                background: $theme-color-2;
+            }
+        }
+    }
+    .contact-details-row
+    {
+        background: black;
+        color: white;
+        
+    }
+    .contact-details-row
+    {
+        background: black;
+        color: white;
+        
+    }
+
+    .switchers-list
+    {
+        // @include switcher-item-styles($black-d, $theme-color-1);
+
+        .switcher-item
+        {
+          padding: 20px 20px;
+
+            .item-inner
+            {
+                padding: 0px;
+                border: none;
+
+                ion-label {
+                    margin-left: 0px;
+                }
+            }
+
+            ion-toggle {
+                padding-right: 0px;
+            }
+        }
+    }
+
+    [cards] {
+        .grid-full ion-col {
+            flex: 0 0 60%;
+            max-width: 33%;
+            padding: 5px 0;
+        }
+        span{
+            padding:0px 10px 0px 0px;
+            font-size: 1.5rem;
+            
+            // margin:0px; 
+            }
+        .row {
+            padding: 0;
+        }
+        .col {
+            padding: 5px 0;
+        }
+            //     background: linear-gradient(125deg, #44727a ,#49979b, #3d889c,#276981);
+            h1 {
+                text-align: center;
+                font-weight: 400;
+                // font-size: $main-font-size;
+                font-size: 3.5rem;
+                color: $black;
+            }
+            p {
+                text-align: center;
+                font-weight: 100;
+                font-size: 1.5rem;
+                color: $black;
+            }
+        // }
+    }
+}

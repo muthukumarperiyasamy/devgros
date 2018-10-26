@@ -1,0 +1,251 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="section" class="segment-btn-group" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="New orders" (ionSelect)="onSegmentSelected($event)">
+      New orders
+    </ion-segment-button>
+    <ion-segment-button value="Scheduled" (ionSelect)="onSegmentSelected($event)">
+      Scheduled
+    </ion-segment-button>
+    <ion-segment-button value="Delivered" (ionSelect)="onSegmentSelected($event)">
+      Delivered
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="section">
+    <div *ngSwitchCase="'New orders'">
+      <!-- <div class="nomsg" *ngIf="this.neworder.length == 0">
+        <p>Today NO New order For You</p>
+      </div> -->
+      <ion-list class="schedule-list ">
+        <ion-item class=" fade-in-item schedule-item" *ngFor="let item of neworder ">
+          <!-- (click)="nextpage(item)" -->
+          <ion-row>
+            <ion-col col-2 class="schedule-date1">
+
+              <h2 class="schedule-day">{{item.date}}</h2>
+              <h3 class="schedule-month">{{item.month}}</h3>
+              <h4 class="schedule-time">{{item.time}}</h4>
+            </ion-col>
+
+            <ion-col col-10 class="schedule-data ">
+              <!-- <div class="data-item"> -->
+              <div class="item-content">
+                <div>
+                  <ion-row>
+                    <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/ticket.png" class="icons">
+                      <!-- <ion-icon class=" fa fa-ticket description-icon"></ion-icon> -->
+                      <p class=" description-text one-line">{{item.order_id}}</p>
+                    </ion-col>
+                    <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/user.png" class="icons">
+                      <!-- <ion-icon class=" fa fa-user description-icon"></ion-icon> -->
+                      <p class="description-text one-line">{{item.name}}</p>
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <div>
+                  <ion-row>
+                    <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/delivery.png" class="icons">
+                      <!-- <ion-icon class="description-icon" name="clock"></ion-icon> -->
+                      <p class="description-text one-line">{{ item.delivery_time}}</p>
+                      <!-- <ion-icon class="description-icon fa fa-clock-o"></ion-icon> -->
+                      <!-- {{ item.delivery_time}} -->
+                    </ion-col>
+                    <ion-col col-6 class="item-description">
+                      <!-- <i class="fa fa-tint description1-icon"></i> -->
+                      <!-- <ion-icon class="description-icon fa fa-tint"></ion-icon>
+                     
+                      <p class="description-text one-line">
+                        <b>{{item.no_of_cans}} Cans</b>
+                        <ion-icon class="description-icon" *ngIf="item.grocery !='null'"  name="ios-paper-outline"></ion-icon>
+                      </p> -->
+                      <button ion-button outline small round class="view" (click)="nextpage(item)">View</button>
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <!-- <div >
+                  <ion-row>
+                    <ion-col>
+                      <ion-icon class="description-icon" name="md-cart"></ion-icon>
+                      <p class="description-text">
+                        <b>{{item.no_of_cans}} Cans</b>
+                      </p>
+                    </ion-col>
+                    <ion-col>
+                      <ion-icon class="description-icon" name="clock"></ion-icon>
+                      <p class="description-text"> {{item.delivery_time}}</p>
+                    </ion-col>
+                  </ion-row>
+                </div> -->
+                <!-- <div>
+                  <ion-row>
+                    <ion-col col-6 class="item-description">
+                      <ion-icon class="description-icon" name="flag"></ion-icon>
+                      <p class="description-text one-line"> {{item.status}}</p>
+                    </ion-col>
+                    <ion-col col-6 class="item-description">
+                      <ion-icon class="description-icon" name="cash"></ion-icon>
+                      <p class="description-text one-line">{{item.payment}}</p>
+                    </ion-col>
+                  </ion-row>
+                </div> -->
+              </div>
+              <!-- </div> -->
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'Scheduled'">
+      <!-- <div class="nomsg" *ngIf="this.scheduledorder.length == 0">
+        <p>Today NO undelivered order For You</p>
+      </div> -->
+      <ion-list class="schedule-list">
+        <ion-item class="  fade-in-item schedule-item" *ngFor="let item of scheduledorder ">
+          <!-- (click)="nextpage(item)" -->
+          <ion-row>
+            <ion-col col-2 class="schedule-date">
+
+              <h2 class="schedule-day">{{item.date}}</h2>
+              <h3 class="schedule-month">{{item.month}}</h3>
+              <h4 class="schedule-time">{{item.time}}</h4>
+            </ion-col>
+
+            <ion-col col-10 class="schedule-data">
+              <div class="data-item">
+                <div class="item-content">
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                        <img src="./assets/icons/ticket.png" class="icons">
+                        <!-- <ion-icon class="description-icon fa fa-ticket"></ion-icon> -->
+                        <p class="description-text one-line">{{item.order_id}}</p>
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                        <img src="./assets/icons/user.png" class="icons">
+                        <!-- <ion-icon class="description-icon" name="contact"></ion-icon> -->
+                        <p class="description-text one-line">{{item.name}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                        <!-- <ion-icon class="description-icon" name="cash"></ion-icon>
+                        <p class="description-text one-line">{{item.payment}}</p> -->
+                        <img src="./assets/icons/flag.png" class="icons">
+                        <!-- <ion-icon class="description-icon" name="flag"></ion-icon> -->
+                        <p class="description-text one-line">{{item.status}}</p>
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                        <img src="./assets/icons/delivery.png" class="icons">
+                        <!-- <ion-icon class="description-icon" name="clock"></ion-icon> -->
+                        <p class="description-text one-line">{{ item.delivery_time}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                        <!-- <ion-icon class="description-icon fa fa-tint"></ion-icon>
+                          <p class="description-text one-line">
+                            <b>{{item.no_of_cans}} Cans</b>
+                            <ion-icon class="description-icon" *ngIf="item.grocery !='null'"  name="ios-paper-outline"></ion-icon>
+                          </p> -->
+                        <button ion-button outline small round class="view" (click)="navigate(item.location)">
+                          <ion-icon class="fa  fa-map-marker"></ion-icon>&nbsp;locate</button>
+                        <!-- <ion-icon class="description-icon fa  fa-map-marker" (click)="navigate(item.location)"></ion-icon> -->
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                        <button ion-button outline small round class="view" (click)="nextpage(item)">View</button>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'Delivered'">
+      <!-- <div class="nomsg" *ngIf="this.deliveredorder.length == 0">
+        <p>Today NO Delivered order For You</p>
+      </div> -->
+      <ion-list class="schedule-list">
+        <!-- (click)="nextpage(item)" -->
+        <ion-item class="fade-in-item schedule-item" *ngFor="let item of deliveredorder ">
+          <ion-row>
+            <ion-col col-2 class="schedule-date">
+
+              <h2 class="schedule-day">{{item.date}}</h2>
+              <h3 class="schedule-month">{{item.month}}</h3>
+              <h4 class="schedule-time">{{item.time}}</h4>
+            </ion-col>
+
+            <ion-col col-10 class="schedule-data">
+              <div class="data-item">
+                <div class="item-content">
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/ticket.png" class="icons">
+                      <!-- <ion-icon class="description-icon fa fa-ticket"></ion-icon> -->
+                        <p class="description-text one-line">{{item.order_id}}</p>
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/user.png" class="icons">
+                      <!-- <ion-icon class="description-icon" name="contact"></ion-icon> -->
+                        <p class="description-text one-line">{{item.name}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/flag.png" class="icons">
+                      <!-- <ion-icon class="description-icon" name="flag"></ion-icon> -->
+                        <p class="description-text one-line">{{item.status}}</p>
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                        <img src="./assets/icons/delivery.png" class="icons">
+                        <!-- <ion-icon class="description-icon" name="clock"></ion-icon> -->
+                        <p class="description-text one-line">{{ item.delivery_time}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                  <div>
+                    <ion-row>
+                      <ion-col col-6 class="item-description">
+                        <button ion-button outline small round class="view" (click)="nextpage(item)">View</button>
+                      </ion-col>
+                      <ion-col col-6 class="item-description">
+                      <img src="./assets/icons/payment.png" class="icons">
+                      <!-- <ion-icon class="description-icon" name="cash"></ion-icon> -->
+                        <p class="description-text top one-line">{{item.payment}}  <button ion-button outline round icon-only class="view" *ngIf="item.payment == 'Unpaid'"  (click)="updatetpayment(item)">Paid
+                          <!-- <ion-icon *ngIf="item.payment == 'Unpaid'" class="description-icon fa fa-reply"  (click)="updatetpayment(item)"></ion-icon> -->
+                        </button></p>
+                       
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

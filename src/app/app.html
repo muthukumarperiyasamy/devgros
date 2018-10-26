@@ -1,0 +1,103 @@
+<ion-menu [content]="content" [swipeEnabled]="false" class="menu-content myBg">
+  
+    <ion-content class="menu-content">
+      <div class="userinfo">
+        <ion-row>
+          <ion-col col-4>
+            <div class="logo"></div>
+          </ion-col>
+          <ion-col col-8>
+            <div class="info">
+              <p>{{this.username}}</p>
+              <p *ngIf="this.username == null">Welcome to Fresh Can</p>
+  
+              <p>{{this.usermobile}}</p>
+              <p *ngIf="this.usermobile == null">We settle your life living</p>
+              <!-- Make your next big-->
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-list>
+        <button class="menu-list" ion-item menuClose (click)="goHome()">
+          <ion-icon item-start class="fa fa-home"></ion-icon>
+          Home
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="Order()">
+          <ion-icon item-start name="timer"></ion-icon>
+          Shop Settings
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="todayorder()">
+          <ion-icon item-start class="fa fa-first-order"></ion-icon>
+          Orders
+        </button>
+  
+        <!-- <button class="menu-list" menuClose ion-item *ngFor="let p of dynamic" (click)="InAppBrowsera(p)">
+          <ion-icon item-start name="ios-redo"></ion-icon>
+          {{p.title}}
+        </button> -->
+        <button *ngIf="this.shoptype !='0'" class="menu-list" ion-item menuClose (click)="Prodcategory()">
+          <ion-icon item-start name="md-cloud-upload"></ion-icon>
+          Update Shop
+        </button>
+        <button *ngIf="this.shoptype !='0'" class="menu-list" ion-item menuClose (click)="Addproduct()">
+          <ion-icon item-start name="md-cloud-upload"></ion-icon>
+          Add Product
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="Customers()">
+          <ion-icon item-start class="fa fa-first-order"></ion-icon>
+          Customers List
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="payment()">
+          <ion-icon item-start class="fa fa-money"></ion-icon>
+          Payment Status
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="feedback()">
+          <ion-icon item-start class="fa fa-comments-o"></ion-icon>
+          Feedback
+        </button>
+        
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          My Account
+        </ion-list-header>
+        <button class="menu-list" ion-item menuClose (click)="profile()">
+          <ion-icon item-start name="ios-contact"></ion-icon>
+          My Profile
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="changepassword()">
+          <ion-icon item-start name="md-create"></ion-icon>
+          Change Password
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="notification()">
+          <ion-icon item-start name="notifications"></ion-icon>
+          Notifications
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="InAppBrowser()">
+          <ion-icon item-start name="globe"></ion-icon>
+          FAQ-Videos
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="about()">
+          <ion-icon item-start name="ios-redo"></ion-icon>
+          About
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="contact()">
+          <ion-icon item-start name="call"></ion-icon>
+          Connect with Us
+        </button>
+        <button class="menu-list" ion-item menuClose (click)="termsconditions()">
+          <ion-icon item-start name="ios-redo"></ion-icon>
+          Terms and Conditions
+        </button>
+        <ion-item>
+          <span item-right class="version">
+            V 0.0.2
+          </span>
+        </ion-item>
+      </ion-list>
+  
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

@@ -1,0 +1,83 @@
+page-subcategory2 {
+    .cart{
+        font-size:1.8em;
+        padding-right: 10px;
+    }
+        .item-md
+        { 
+            padding-left:10px;
+            img{
+                min-width:60px;
+                min-height:60px !important;
+            }
+        }
+        ion-scroll { white-space: nowrap; }
+        .button-block {
+            width: 90%; 
+            margin: 0 auto;
+            background-color: $theme-color-2;
+        }
+    .icon-size{
+        font-size:1.9rem;
+    }
+    .zero-margin{
+        margin-top:2px !important;
+        margin-left:8px;
+        margin-right:8px;
+    }
+    .footer-icon{
+        margin-right:10px;
+    }
+    .select-md .select-icon{
+        width:15px;
+    }
+    .custom-select{
+        .select-icon{
+            padding-right:25px;
+            .select-icon-inner{
+                color:color($colors,primary);
+            }
+        }
+        .select-text{
+            color:color($colors,primary);
+        padding-top:4px;
+        text-align:center;
+        }
+        min-width: 120%;
+        padding-top:25px;
+        margin-top: 5px;
+        margin-left: 5px;
+        padding: 0;
+        height: 23px;
+        border: 1px solid color($colors,button-color);  
+        border-radius:8px;
+    }
+//     .button-block {
+//         margin: 0 auto;
+//         width: 90%; 
+//                background-color: $theme-color-3;
+//           .button-inner
+//              {
+//                  text-align: justify;
+//              }
+//   }
+        ion-searchbar{
+                       // min-height: inherit !important;
+                        // padding-top: 5px !important;
+                         // padding-bottom: 5px !important;
+                        background: #ebebeb !important;
+                         &.light-searchbar{
+                         &.round .searchbar-search-icon{
+                            // background-color: rgb(221, 14, 14) !important;
+                        }
+                         .searchbar-search-icon, .searchbar-clear-icon{
+                           filter: brightness(-100) !important;
+                        }
+                        .searchbar-input{
+                          background: rgb(255, 255, 255) !important;
+                          border-radius:30px;
+                        }
+                     }
+         }
+  
+}

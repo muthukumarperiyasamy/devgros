@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Shop Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="cost">
+
+
+  <ion-card>
+
+    <ion-card-header text-center>
+      App Cost
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <h5 text-center>Rental:
+          <b> &#8377; {{this.appcost}}</b> per month</h5>
+      </ion-item>
+      <ion-item *ngIf="this.cancost != '0'">
+        <h5 text-center>Can :
+          <b> &#8377; {{this.cancost}}</b> Per can</h5>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header text-center>
+      Shop Products
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h3>Can</h3>
+          </div>
+          <div>
+            <ion-row class="toggle">
+              <ion-toggle checked="false" [(ngModel)]="this.can"></ion-toggle>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div text-center>
+            <h3>Grocerry</h3>
+          </div>
+          <div>
+            <ion-row class="toggle">
+              <ion-toggle checked="false" [(ngModel)]="this.grocerry"></ion-toggle>
+            </ion-row>
+          </div>
+        </ion-col>
+        <!-- <ion-col>
+          <div text-center>
+            <h3>Vegetables</h3>
+          </div>
+          <div>
+            <ion-row>
+                <ion-toggle *ngIf="this.grocerry == true" checked="false" [(ngModel)]="this.vegetables" ></ion-toggle>
+            </ion-row>
+          </div>
+        </ion-col> -->
+      </ion-row>
+      <button ion-button block round class="button" type="submit" (click)="shopproduct()">set</button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header text-center>
+      Can Cost
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h3> Buying</h3>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col col-4>
+              </ion-col>
+              <ion-col col-4>
+                <ion-input class="input" type="number" [(ngModel)]="this.buying"></ion-input>
+              </ion-col>
+              <ion-col col-4>
+
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div text-center>
+            <h3> Selling</h3>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col col-4>
+
+              </ion-col>
+              <ion-col col-4>
+                <ion-input class="input" type="number" [(ngModel)]="this.costselling"></ion-input>
+              </ion-col>
+              <ion-col col-4>
+
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <button ion-button block round class="button" type="submit" (click)="set()">set</button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header text-center>
+      Total Can
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h3> In Business</h3>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col col-4>
+              </ion-col>
+              <ion-col col-4>
+                <ion-input class="input" type="number" [(ngModel)]="this.invested"></ion-input>
+              </ion-col>
+              <ion-col col-4>
+
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div text-center>
+            <h3> Damaged</h3>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col col-4>
+
+              </ion-col>
+              <ion-col col-4>
+                <ion-input class="input" type="number" [(ngModel)]="this.damaged"></ion-input>
+              </ion-col>
+              <ion-col col-4>
+
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <button ion-button block round class="button" type="number" (click)="set()">Update</button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

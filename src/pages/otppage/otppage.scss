@@ -1,0 +1,45 @@
+page-otppage {
+    .otp{
+        color:floralwhite; 
+        background-image: url("../assets/images/otp.jpg");
+    }
+   ion-item {
+            border-radius: 30px !important;
+   //          padding-left: 30px !important;
+   //          font-size: 0.9em;
+   //          background-color: #ee37a2;
+   //          margin-bottom: 10px;
+   //          border: 25px solid #ca1717;
+   //          border-bottom: 0px !important;
+   //          box-shadow: none !important;
+   //          border-bottom-color: yellow;
+        }
+        ion-input{
+            margin: 0 auto;
+            text-align:center;
+        }
+        .login-box {
+           background:transparent;
+           padding: 20px 20px 20px 20px;
+          // margin-top: 30px;
+         }
+      
+         .signup-button
+         {
+             margin: 0 auto;
+           // margin: 13px 0px 0px 11px !important;
+           font-weight: 500;
+           color: white;
+           background-color: $theme-color-2;
+           width:50%;
+           .button-inner
+           {
+               text-align: justify;
+           }
+         }
+    
+      
+         
+     
+    
+}

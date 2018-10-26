@@ -1,0 +1,67 @@
+<ion-header class="walkthrough-header">
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-button class="skip-button" (click)="skipIntro()" [hidden]="lastSlide">Skip</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="walkthrough-content">
+  <ion-slides #slider (ionSlideDidChange)="onSlideChanged()" pager="true">
+    <ion-slide class="slide">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <img src="./assets/images/screen-1.png" alt="slide 1 img" title="ion2FullApp">
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Sales 24/7</h2>
+      <!-- <p class="intro-text">
+          Get easy access to customers and increase your sales with our app.
+      </p> -->
+    </ion-slide>
+    <ion-slide class="slide">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <img src="./assets/images/screen-2.png" alt="slide 2 img" title="ion2FullApp">
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Trusted Delivery</h2>
+      <!-- <p class="intro-text">
+         We provide reports on daily, weekly and monthly basis to improve your sales.          
+      </p>  -->
+     
+      <!-- <p class="intro-text">
+        Here we have a beautiful walkthrough
+      </p> -->
+    </ion-slide>
+    <!-- <ion-slide class="slide-3">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <preload-image [ratio]="{w:1, h:1}" src="./assets/images/slide-3-img.png" alt="slide 3 img" title="ion2FullApp"></preload-image>
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">TRACK YOUR SALES:</h2>
+      <p class="intro-text">
+          We provide reports on daily, weekly and monthly basis to improve your sales.
+      </p>
+    </ion-slide> -->
+    <ion-slide class="slide">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <img src="./assets/images/screen-3.png" alt="slide 3 img" title="ion2FullApp">
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Grow your Income</h2>
+      <!-- <p class="intro-text">
+          Upgrade your income with our hassle-free services.
+      </p> -->
+      <!-- <p class="intro-text">
+        We are ready to rock!
+      </p> -->
+      <div class="button-bar">
+        <button ion-button primary (click)="goToLogin()">Log in</button>
+        <button ion-button primary (click)="goToSignup()">Sign up</button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

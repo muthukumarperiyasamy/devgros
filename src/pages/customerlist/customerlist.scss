@@ -1,0 +1,38 @@
+page-customerlist {
+    .label-md {
+        margin: 10px 0px 3px 0 !important;
+    }
+    .col{
+        margin:auto;
+    }
+    .nomsg{
+        p{
+            padding-top:15px !important;
+        }
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 15px  !important;
+        background-color:$theme-color-1; 
+        color:#fff;   
+        height:55px;
+        margin: 15px;
+    }       
+    ion-searchbar{
+        // min-height: inherit !important;
+         // padding-top: 5px !important;
+          // padding-bottom: 5px !important;
+         background: #ebebeb !important;
+          &.light-searchbar{
+          &.round .searchbar-search-icon{
+             // background-color: rgb(221, 14, 14) !important;
+         }
+          .searchbar-search-icon, .searchbar-clear-icon{
+            filter: brightness(-100) !important;
+         }
+         .searchbar-input{
+           background: rgb(255, 255, 255) !important;
+           border-radius:30px;
+         }
+      }
+}
+}

@@ -1,0 +1,189 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Order Details</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- ******************************************user details*************************************************** -->
+  <ion-list>
+    <ion-item class="item-content">
+      <ion-row>
+        <ion-col class="item-description">
+          <ion-icon class="description-icon fa fa-ticket"></ion-icon>
+          <p class="description-text one-line">{{this.id}}</p>
+        </ion-col>
+        <ion-col class="item-description">
+          <ion-icon class="description-icon" name="contact"></ion-icon>
+          <p class="description-text one-line">{{this.name}}</p>
+        </ion-col>
+        <!-- <ion-col col-4 class="item-description">
+          <ion-icon class="description-icon  fa fa-tint"></ion-icon>
+          <p class="description-text one-line">{{this.cans}} cans</p>
+        </ion-col> -->
+      </ion-row>
+    </ion-item>
+    <!-- *****************************************Headers of orders**************************************************** -->
+    <ion-card>
+      <ion-card-header no-padding text-center>
+        <ion-row class="heading">
+          <ion-col col-5>Product Details</ion-col>
+          <ion-col col-3>NOs</ion-col>
+          <ion-col col-4 *ngIf="this.orderlist !='null'">Shop Price</ion-col>
+        </ion-row>
+      </ion-card-header>
+      <!-- ***************************************** Can Orders**************************************************** -->
+      <ion-item *ngIf="this.cans !='0'">
+        <ion-row>
+          <ion-col class="details">
+
+            <ion-row>
+              <ion-col col-7 text-wrap>
+                <h4>
+                  <b>Water can</b>
+                </h4>
+              </ion-col>
+              <ion-col col-1>
+                <h4>
+                  <b>{{this.cans}}</b>
+                </h4>
+              </ion-col>
+              <ion-col col-4>
+                <!-- <h4 *ngIf="i.cost != undefined">
+                        <b> &nbsp; &#8377;&nbsp;{{i.cost}}</b>
+                      </h4> -->
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <!-- *************************************Grocery Orders******************************************************** -->
+      <ion-item class="items" *ngFor=" let i of order">
+        <ion-row class="details">
+          <ion-col col-9>
+            <h4>
+              <b>{{i.name}}</b>
+            </h4>
+            <ion-row>
+              <ion-col col-9>
+                <h4>Weight:
+                  <b>{{i.weight}}</b>
+                </h4>
+              </ion-col>
+              <ion-col col-3>
+                <h4>
+                  <b>{{i.quantity}}</b>
+                </h4>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col col-3>
+            <ion-item>
+              <ion-input readonly *ngIf="this.type !='new'" style="width: 100px;" type="number" [(ngModel)]="i.cost"></ion-input>
+              <ion-input *ngIf="this.type =='new'" style="width: 120px;" type="number" (change)="getmrp(i.cost)" [(ngModel)]="i.cost"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <!-- </ion-card> -->
+      <!-- <ion-card *ngIf="this.orderlist !='null'"> -->
+      <!-- ************************************* MRP & Shop Price******************************************************** -->
+      <ion-row class="mrp items" *ngIf="this.orderlist !='null'">
+        <ion-col col-6 class="divider">
+          <div *ngIf="this.cans !='0'">
+            <div *ngIf="this.type =='new'">
+              <ion-icon class="star fa fa-star"></ion-icon>&nbsp; Include Can cost with Shop Price</div>
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <ion-label>MRP Price</ion-label>
+          <ion-input readonly *ngIf="this.type !='new'" style="width: 75px;" type="number" [(ngModel)]="mrpprice"></ion-input>
+          <ion-input required *ngIf="this.type =='new'" style="width: 75px;" type="number" [(ngModel)]="mrpprice"></ion-input>
+        </ion-col>
+        <ion-col col-3>
+          <ion-label>Shop Price</ion-label>
+          <ion-input readonly *ngIf="this.type !='new'" style="width: 75px;" type="number" [(ngModel)]="shopprice"></ion-input>
+          <ion-input required *ngIf="this.type =='new'" style="width: 75px;" type="number" (ionFocus)="getcst()" [(ngModel)]="shopprice"></ion-input>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-card>
+        <ion-item-divider *ngIf="this.type =='new'" class="divider">
+           <ion-icon class="star fa fa-star"></ion-icon>&nbsp; Include Can cost with Shop Price
+        </ion-item-divider>
+      </ion-card> -->
+      <!-- *********************************** Delivery Charges********************************************************** -->
+      <ion-row class="mrp items" *ngIf="this.orderlist !='null'">
+        <ion-col>
+          <ion-item>
+            <ion-label>
+              Delivery charges
+            </ion-label>
+            <ion-toggle checked="true" [(ngModel)]="this.toggle" (ionChange)="notify($event)"></ion-toggle>
+          </ion-item>
+        </ion-col>
+        <ion-col *ngIf="this.toggle == true">
+          <!-- *ngIf="this.type =='new'" -->
+          <!-- <ion-label>&nbsp;</ion-label> -->
+          <!-- <ion-input readonly style="width: 75px;" type="number" [(ngModel)]="deliveryprice"></ion-input> -->
+          <p> &#8377; {{deliveryprice}}</p>
+        </ion-col>
+        <ion-col *ngIf="this.toggle == false">
+          <p>Free</p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <!-- ************************************** Address Of the Customer ******************************************************* -->
+    <ion-card>
+      <ion-item>
+        <!-- <ion-label stacked>Address</ion-label> -->
+        <p>
+          <b>Address:</b>
+        </p>
+        <p>{{this.address}}</p>
+        <!-- readonly rows="3" [(ngModel)]="this.address" -->
+      </ion-item>
+      <!-- *************************************** Delivery Time****************************************************** -->
+      <ion-item *ngIf="this.type == 'new'">
+        <ion-label>Delivery time</ion-label>
+        <ion-select interface="popover" [(ngModel)]="this.deltime">
+          <ion-option value="Select">Select</ion-option>
+          <ion-option *ngIf="this.time <= 6" value="6AM - 7AM">6AM - 7AM</ion-option>
+          <ion-option *ngIf="this.time <= 7" value="7AM - 8AM">7AM - 8AM</ion-option>
+          <ion-option *ngIf="this.time <= 8" value="8AM - 9AM">8AM - 9AM</ion-option>
+          <ion-option *ngIf="this.time <= 9" value="9AM - 10AM">9AM - 10AM</ion-option>
+          <ion-option *ngIf="this.time <= 10" value="10AM - 11AM">10AM - 11AM</ion-option>
+          <ion-option *ngIf="this.time <= 11" value="11AM - 12PM">11AM - 12PM</ion-option>
+          <ion-option *ngIf="this.time <= 12" value="12PM - 1PM">12PM - 1PM</ion-option>
+          <ion-option *ngIf="this.time <= 13" value="1PM - 2PM">1PM - 2PM</ion-option>
+          <ion-option *ngIf="this.time <= 14" value="2PM - 3PM">2PM - 3PM</ion-option>
+          <ion-option *ngIf="this.time <= 15" value="3PM - 4PM">3PM - 4PM</ion-option>
+          <ion-option *ngIf="this.time <= 16" value="4PM - 5PM">4PM - 5PM</ion-option>
+          <ion-option *ngIf="this.time <= 17" value="5PM - 6PM">5PM - 6PM</ion-option>
+          <ion-option *ngIf="this.time <= 18" value="6PM - 7PM">6PM - 7PM</ion-option>
+          <ion-option *ngIf="this.time <= 19" value="7PM - 8PM">7PM - 8PM</ion-option>
+          <ion-option *ngIf="this.time <= 20" value="8PM - 9PM">8PM - 9PM </ion-option>
+          <ion-option *ngIf="this.time <= 21" value="9PM - 10PM">9PM - 10PM</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <!-- **********************************Submit Button*********************************************************** -->
+    <div *ngIf="this.status != 'Delivered'">
+      <ion-item *ngIf="this.type != 'new'">
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button small class="submit-button" type="submit" (click)="deliveredset('Paid')">Delivered - paid</button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button small class="submit-button" type="submit" (click)="deliveredset('Unpaid')">Delivered - Unpaid</button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </div>
+    <button *ngIf="this.type == 'new'" ion-button block class="submit-button" type="submit" (click)="updatedeltime()">Schedule</button>
+  </ion-list>
+  <!-- </ion-scroll> -->
+</ion-content>
