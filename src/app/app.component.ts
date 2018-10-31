@@ -48,7 +48,7 @@ export class MyApp {
   public response: any;
   public actionid: any;
   public orderidd: any;
-  public version: any = "0.0.1";
+  public version: any = "0.0.2";
 
   pages: Array<{ title: string, icon: string, component: any }>;
   pushPages: Array<{ title: string, icon: string, component: any }>;
@@ -252,7 +252,7 @@ export class MyApp {
   showupdate() {
     let confirm = this.alertCtrl.create({
       title: 'Update Available',
-      message: 'There is a newer version of Fresh Can Shop Available. Update now? ',
+      message: 'There is a newer version of Fresh Can Shop Available. Update now? For Your better Experiences',
       buttons: [
         {
           text: ' Cancel',

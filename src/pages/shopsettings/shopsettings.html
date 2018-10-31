@@ -6,7 +6,7 @@
     <ion-title>Shop Settings</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content padding class="cost">
+<ion-content  class="cost">
 
 
   <ion-card>
@@ -16,12 +16,12 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <h5 text-center>Rental:
-          <b> &#8377; {{this.appcost}}</b> per month</h5>
+        <h5 text-center text-wrap>
+          <b>  {{this.appcost}}</b></h5>
       </ion-item>
-      <ion-item *ngIf="this.cancost != '0'">
-        <h5 text-center>Can :
-          <b> &#8377; {{this.cancost}}</b> Per can</h5>
+      <ion-item>
+        <h5 text-center>
+          <b>{{this.cancost}}</b> </h5>
       </ion-item>
     </ion-card-content>
   </ion-card>

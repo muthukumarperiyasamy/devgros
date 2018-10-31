@@ -31,8 +31,8 @@ export class TimeslotPage {
     public http: Http,
     public navParams: NavParams,
   ) {
-    this.appcost = "30";
-    this.cancost = "0";
+    // this.appcost = "30";
+    // this.cancost = "0";
   }
 
   ionViewDidLoad() {

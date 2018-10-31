@@ -30,6 +30,7 @@ import { CustomerlistPage } from '../pages/customerlist/customerlist';
 import { PaymentstatusPage } from '../pages/paymentstatus/paymentstatus';
 import { OrdersPage } from '../pages/orders/orders';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { CommentsPage } from '../pages/comments/comments';
 
 import { DataServiceProvider } from '../providers/data-service/data-service';
 
@@ -86,6 +87,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     PaymentstatusPage,
     OrdersPage,
     FeedbackPage,
+    CommentsPage,
 
     PreloadImage,
     ShowHideContainer,
@@ -131,6 +133,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     PaymentstatusPage,
     OrdersPage,
     FeedbackPage,
+    CommentsPage,
   ],
   providers: [
     StatusBar,

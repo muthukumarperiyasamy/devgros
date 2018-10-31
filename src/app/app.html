@@ -31,7 +31,10 @@
           <ion-icon item-start class="fa fa-first-order"></ion-icon>
           Orders
         </button>
-  
+        <button class="menu-list" ion-item menuClose (click)="notification()">
+          <ion-icon item-start name="notifications"></ion-icon>
+          Notifications
+        </button>
         <!-- <button class="menu-list" menuClose ion-item *ngFor="let p of dynamic" (click)="InAppBrowsera(p)">
           <ion-icon item-start name="ios-redo"></ion-icon>
           {{p.title}}
@@ -41,11 +44,11 @@
           Update Shop
         </button>
         <button *ngIf="this.shoptype !='0'" class="menu-list" ion-item menuClose (click)="Addproduct()">
-          <ion-icon item-start name="md-cloud-upload"></ion-icon>
-          Add Product
+          <ion-icon item-start class="fa fa-cart-plus"></ion-icon>
+          Add Product   
         </button>
         <button class="menu-list" ion-item menuClose (click)="Customers()">
-          <ion-icon item-start class="fa fa-first-order"></ion-icon>
+          <ion-icon item-start class="fa fa-user-circle"></ion-icon>
           Customers List
         </button>
         <button class="menu-list" ion-item menuClose (click)="payment()">
@@ -66,14 +69,10 @@
           <ion-icon item-start name="ios-contact"></ion-icon>
           My Profile
         </button>
-        <button class="menu-list" ion-item menuClose (click)="changepassword()">
+        <!-- <button class="menu-list" ion-item menuClose (click)="changepassword()">
           <ion-icon item-start name="md-create"></ion-icon>
           Change Password
-        </button>
-        <button class="menu-list" ion-item menuClose (click)="notification()">
-          <ion-icon item-start name="notifications"></ion-icon>
-          Notifications
-        </button>
+        </button> -->
         <button class="menu-list" ion-item menuClose (click)="InAppBrowser()">
           <ion-icon item-start name="globe"></ion-icon>
           FAQ-Videos

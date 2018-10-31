@@ -1,0 +1,39 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>comments</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+
+<ion-content class="main-view">
+  <div class="overlay" (click)="dismiss()"> </div>
+  <ion-scroll class="modal_content" scrollY="true">
+
+    <ion-list>
+      <ion-item class="item-content">
+        <ion-row>
+          <ion-col col-4 class="item-description">
+            <ion-icon class="description-icon fa fa-ticket"></ion-icon>
+            <p class="description-text one-line">{{this.id}}</p>
+          </ion-col>
+          <ion-col col-8 class="item-description">
+            <ion-icon class="description-icon" name="contact"></ion-icon>
+            <p class="description-text one-line">{{this.name}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-label>Customer Opinion:&nbsp;&nbsp;<b>{{this.type}}</b></ion-label>
+      </ion-item>
+      <ion-item class="comments" *ngIf="this.description !=''" >
+        <ion-label text-wrap>Comments:&nbsp;&nbsp;
+        <b>{{this.description}}</b>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <button ion-button block class="submit-button" (click)="dismiss()">Ok</button>
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
+
+</ion-content>

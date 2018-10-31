@@ -1,4 +1,16 @@
 page-paymentstatus {
+    .nomsg{
+        p{
+            padding-top:15px !important;
+        }
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 15px  !important;
+        background-color:$theme-color-1; 
+        color:#fff;   
+        height:55px;
+        margin: 15px;
+    } 
     .segment-md .segment-button{
         color: $white;
         height: 5.8rem;
@@ -140,7 +152,7 @@ page-paymentstatus {
         }
         .schedule-item
         {
-            padding: 5px;
+            padding: 2px;
             // background-color:$theme-color-3;
             // background: linear-gradient(45deg, #beb1b1 , #291526,#292324);
             border: none;

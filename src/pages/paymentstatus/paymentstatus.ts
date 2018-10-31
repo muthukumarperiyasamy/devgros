@@ -277,13 +277,13 @@ export class PaymentstatusPage {
     // this.initializeItems();
     // set val to the value of the searchbar
     const val = ev.target.value;
-    this.unpaid = this.copyunpaid;
+    this.paid = this.copypaid;
     if (!val) {
       return;
     }
     // if the value is an empty string don't filter the items
     // if (val && val.trim() != '') {
-    this.unpaid = this.unpaid.filter((item) => {
+    this.paid = this.paid.filter((item) => {
 
       if (item.name && val) {
         if (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1) {

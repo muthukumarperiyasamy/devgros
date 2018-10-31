@@ -7,11 +7,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="nomsg" *ngIf="this.customer.length == 0">
+  <div class="nomsg" *ngIf="this.copycustomer.length == 0">
     <p>No Customer Have registered Your Number!!</p>
     <!-- <p></p> -->
   </div>
-  <div *ngIf="this.customer.length != 0">
+  <div *ngIf="this.copycustomer.length != 0">
     <ion-row>
       <ion-col>
         <ion-searchbar showCancelButton cancelButtonText="Custom Cancel" class="light-searchbar" (ionInput)="getItems($event)"></ion-searchbar>

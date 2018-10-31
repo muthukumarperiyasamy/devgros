@@ -65,7 +65,7 @@ export class Otppage {
           this.presentToast('Sorry ! OTP Verification Failed !')
         }
         else {
-          console.log('already exist');
+          console.log('Invalid OTP,');
           this.presentToast('Sorry !  Invalid OTP, Please check and re-enter the OTP !')
         }
 
@@ -77,11 +77,11 @@ export class Otppage {
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 3000,
+      duration: 5000,
       position: 'bottom',
       showCloseButton: true,
       closeButtonText: 'Ok',
-      dismissOnPageChange: true
+      // dismissOnPageChange: true
     });
 
     toast.onDidDismiss(() => {

@@ -88,7 +88,7 @@ export class SignupPage {
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      // duration: 3000,
+      duration: 5000,
       position: 'bottom',
       showCloseButton: true,
       closeButtonText: 'Ok'

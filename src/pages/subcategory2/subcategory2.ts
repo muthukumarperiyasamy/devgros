@@ -58,11 +58,11 @@ export class Subcategory2Page {
   addProduct(product) {
     console.log(product);
 
-    if (product.inshop === "Add") {
-      product.inshop = "Remove";
+    if (product.inshop === "Remove") {
+      product.inshop = "Add";
       product.disabled = false;
     } else {
-      product.inshop = "Add";
+      product.inshop = "Remove";
       product.disabled = false;
     }
   }

@@ -32,7 +32,7 @@
     "@ionic-native/in-app-browser": "^4.15.0",
     "@ionic-native/launch-navigator": "^4.11.0",
     "@ionic-native/market": "^4.16.0",
-    "@ionic-native/onesignal": "^4.11.0",
+    "@ionic-native/onesignal": "^4.16.0",
     "@ionic-native/splash-screen": "~4.11.0",
     "@ionic-native/status-bar": "~4.11.0",
     "@ionic/storage": "2.1.3",

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, ModalController,SegmentButton, LoadingController, ToastController } from 'ionic-angular';
 import 'rxjs/Rx';
 import { Http } from '@angular/http';
 import { TermsOfServicePage } from '../terms-of-service/terms-of-service';
@@ -12,6 +12,7 @@ import { WalkthroughPage } from '../walkthrough/walkthrough';
 })
 export class ProfilePage {
   loading: any;
+  section: string;
   public name: any;
   public usernum: any;
   public email: any;
@@ -26,6 +27,13 @@ export class ProfilePage {
   public usermobile: any;
   public response: any;
   public toggle: boolean = true;
+ 
+ 
+  public old:any;
+  public new:any;
+  public new1:any;
+  public response1: any;
+  public Data: any;
   constructor(
     public nav: NavController,
     public modal: ModalController,
@@ -34,13 +42,14 @@ export class ProfilePage {
     public loadingCtrl: LoadingController,
 
   ) {
-    this.loading = this.loadingCtrl.create();
-
-
+    this.section = "profile";
   }
-
+  onSegmentChanged(segmentButton: SegmentButton) {
+    console.log('Segment changed to', segmentButton.value);
+  }
+  onSegmentSelected(segmentButton: SegmentButton) {
+  }
   ionViewDidLoad() {
-    this.loading.present();
     this.usermobile = localStorage.getItem('mobile');
     this.getprofile();
   }
@@ -66,7 +75,6 @@ export class ProfilePage {
     this.getdata = {
       mobile: this.usermobile,
     }
-    this.loading.present();
     console.log('datas....' + JSON.stringify(this.getdata));
     var link = 'https://www.freshcangrocery.in/sppi/getprofile.php';
     var myData = JSON.stringify(this.getdata);
@@ -84,12 +92,11 @@ export class ProfilePage {
         // this.landmark = this.list.landmark;
         this.shopnum = this.list.shop_mobileno;
 
-        this.loading.dismiss();
       }, error => {
         console.log("Oooops!");
       });
   }
-  update() {
+  profileupdate() {
     this.updatedata = {
       // name: this.name,
       mobile: this.usernum,
@@ -118,6 +125,36 @@ export class ProfilePage {
         console.log("Oooops!");
       });
     console.log(this.updatedata);
+  }
+  passwordupdate() {
+    this.Data = {
+      mobile: this.usermobile,
+      currentpassword: this.old,
+      enteredpassword: this.new,
+      confirmedpassword: this.new1,
+    };
+    // var link = 'https://kumar932486.000webhostapp.com/can2.0/shop_admin/changepwd.php';
+    var link = 'https://www.freshcangrocery.in/sppi/changepwd.php';
+    var myData = JSON.stringify(this.Data);
+    console.log(myData);
+    this.http.post(link, myData)
+      .subscribe(data => {
+        console.log(data["_body"]);
+        data["_body"];
+        this.response = JSON.parse(data["_body"]);
+        if (this.response.status == "1") {
+        console.log("success");        
+          this.presentToast("Your new password updated, please logout and login again.");
+        }
+        else {
+          console.log('Password updated Failed');
+          this.presentToast('We are unable to update your password ! Please retry.')
+
+        }
+      }, error => {
+        console.log("Oooops!");
+      });
+   
   }
   presentToast(msg) {
     let toast = this.toastCtrl.create({

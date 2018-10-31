@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, NavParams } from 'ionic-angular';
+import { NavController, LoadingController, NavParams,ModalController,AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { CommentsPage } from '../comments/comments';
 
 @Component({
   selector: 'page-feedback',
@@ -18,6 +19,8 @@ export class FeedbackPage {
   public response: any;
   constructor(public navCtrl: NavController,
     public http: Http,
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navParams: NavParams) {
     this.loading = this.loadingCtrl.create({
@@ -52,6 +55,7 @@ export class FeedbackPage {
     };
     var link = 'https://www.freshcangrocery.in/sppi/getFeedback.php';
     var myData = JSON.stringify(this.Data);
+    this.loading.present();
     this.http.post(link, myData)
       .subscribe(data => {
         // console.log(data["_body"]);
@@ -61,9 +65,7 @@ export class FeedbackPage {
           this.response.forEach(element => {
             this.feedback.push(element);
             console.log(element.type);
-            
           });
-          // console.log(this.feedback.length);
           this.copyfeedback = this.feedback;
         }
         this.loading.dismiss();
@@ -98,5 +100,21 @@ export class FeedbackPage {
       // return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
     })
     // }
+  }
+  nextpage(item) {
+    // if (item.description !='') {
+      var modal = this.modalCtrl.create(CommentsPage, { id: item });
+      modal.present();
+      modal.onDidDismiss((data) => {
+      });
+  //  }
+  }
+  showAlert(msg) {
+    const alert = this.alertCtrl.create({
+      // title: 'description!',
+      subTitle: msg,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

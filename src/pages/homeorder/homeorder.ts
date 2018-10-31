@@ -49,7 +49,6 @@ export class HomeorderPage {
     this.getorderlist();
     this.getdeliveredorderlist();
     this.getundeliveredorderlist()
-
   }
 
   getorderlist() {
@@ -66,7 +65,7 @@ export class HomeorderPage {
     this.http.post(link, myData)
       .subscribe(data => {
         this.orderlist = JSON.parse(data["_body"]);
-        console.log(data["_body"]);
+        // console.log(data["_body"]);
         if (this.orderlist.length != 0) {
           this.orderlist.forEach(element => {
             element.type = "new";
