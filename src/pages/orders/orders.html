@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content  text-center>
+<ion-content text-center>
   <!-- <div >
     <h5>Your have ordered  {{this.can}}  cans</h5>
   </div> -->
@@ -95,17 +95,22 @@
         </h5>
       </ion-col>
     </ion-row>
-    <p text-center *ngIf="this.shopprice !='0'">Today you Save:
-      <b> &nbsp; &#8377;&nbsp;{{save}}</b>
-    </p>
-    <p text-center *ngIf="this.shopprice !='0'">Delivery Price:
-     <b *ngIf="this.delivery_price !='Free'">&nbsp;&#8377;</b> 
-     <b> &nbsp;{{deliveryprice}}</b>
-    </p>
+    <div class="price">
+      <p text-right *ngIf="this.shopprice !='0'">Coupon Applied:
+        <b> &nbsp; &#8377;&nbsp;{{discountprice}}</b>
+      </p>
+      <p text-right *ngIf="this.shopprice !='0'">Delivery Price:
+        <b *ngIf="this.delivery_price !='Free'">&nbsp;&#8377;</b>
+        <b> &nbsp;{{deliveryprice}}</b>
+      </p>
+      <h3 text-right *ngIf="this.shopprice !='0'">Cash to be Collect:
+        <b> &nbsp; &#8377;&nbsp;{{cashcollect}}</b>
+      </h3>
+    </div>
   </div>
 
-  <ion-thumbnail padding >
-    <img src="http://www.freshcangrocery.in/images/advertisement.png"  alt="grocery">
+  <ion-thumbnail padding>
+    <img src="http://www.freshcangrocery.in/images/advertisement.png" alt="grocery">
     <!-- *********************** image size 380x80******************************* -->
   </ion-thumbnail>
 </ion-content>

@@ -11,6 +11,7 @@ export class DeliveryreportPage {
   public item: any;
   public id: any;
   public name: any;
+  public customermobile: any;
   public cans: any;
   public status: any;
   public deliverystatus: any;
@@ -25,9 +26,17 @@ export class DeliveryreportPage {
   public deltime: any;
   public orderlist: any;
   public order: Array<any> = [];
-  public toggle: boolean = true;
+  public Dtoggle: boolean = false;
+  public ctoggle: boolean = false;
   public deliverypricelist: any;
-  public deliveryprice: any=0;
+  public deliveryprice: any = 0;
+  public cashcollect: any = 0;
+  public discount: any = 0;
+  public offer: any = 0;
+  public offer_used: any;
+  public max_cashback: any;
+  public min_discount: any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,9 +50,6 @@ export class DeliveryreportPage {
       duration: 5000,
       content: "Loading...",
     });
-    // this.getmrp();
-    // this.deliverypricelist = [{ "amount": "100", "charge": 20 }, { "amount": "200", "charge": 15 }, { "amount": "300", "charge": 10 }, { "amount": "500", "charge": 5 }, { "amount": "1000", "charge": 1 }];
-    // console.log(this.deliverypricelist);
 
   }
 
@@ -57,36 +63,38 @@ export class DeliveryreportPage {
     this.payment = this.item.payment;
     this.address = this.item.address;
     this.type = this.item.type;
+    this.cashcollect = this.item.cash_collect;
+    if (this.cashcollect == undefined) {
+      this.cashcollect = 0;
+    }
+    this.discount = this.item.discount_price;
+    console.log(this.discount);
+    if (this.discount == undefined) {
+      this.discount = 0;
+    }
     this.status = this.item.status;
     this.deliveryprice = this.item.delivery_price;
+    if (this.deliveryprice == undefined) {
+      this.deliveryprice = 0;
+    }
+    this.customermobile = this.item.user_mobile;
     console.log(this.item);
-    console.log(this.type);
-    console.log(this.status);
+    // console.log(this.type);
+    // console.log(this.status);
     this.time = new Date().getHours();
-    console.log(this.time);
+    // console.log(this.time);
     this.deltime = "Select";
     this.orderlist = this.item.grocery;
     if (this.orderlist != "null") {
       this.getgrocery();
       this.getdeliveryprice();
     }
-
     console.log(this.orderlist);
-    // if (this.orderlist != "null") {
-    //   this.orderlist.forEach(element => {
-    //     if (this.type == "new") {
-    //       element.cost = 0;
-    //     }
-    //     this.order.push(element);
-    //   });
-    // console.log(this.order);
-    // }
     if (this.item.shop_price != undefined) {
       this.mrpprice = this.item.mrp;
       this.shopprice = this.item.shop_price;
     }
     console.log(this.shopprice);
-
   }
 
   // ******************-----------calculate total shop price with Delivery charge----------*****************************
@@ -94,31 +102,69 @@ export class DeliveryreportPage {
     console.log(cost);
     // this.shopprice +=  Number(cost);
     // console.log(this.deliverypricelist);
-    this.toggle=true;
+    // this.Dtoggle = true;
     this.getcst();
+    if(this.Dtoggle == true){
     this.deliverypricelist.forEach(element => {
       if (this.shopprice <= element.amount) {
-        console.log(" shop price is lower than amount");
-        console.log(element.charge + "delivery charge.......................");
         this.deliveryprice = element.charge;
-        console.log(this.shopprice + "shop price.......................");
       }
       if (this.shopprice > 999) {
-        this.toggle = false;
+        this.Dtoggle = false;
         this.deliveryprice = 0;
       }
     });
+   } 
+   console.log(this.shopprice);
+    console.log(this.deliveryprice);
+    console.log(this.discount);
+    this.cashcollect = Number(this.shopprice) + Number(this.deliveryprice) - Number(this.discount);
+    console.log(this.cashcollect);
+
+  }
+  // ******************************-----------Discount Toggle Action Code----------***************************************
+  notifydiscount() {
+    console.log(this.ctoggle);
+    if (this.ctoggle == true) {
+      this.discount = 0;
+      console.log(this.shopprice);
+      if (this.shopprice > this.min_discount) {
+        if (this.Dtoggle == false) {
+          this.deliveryprice = 0;
+        }
+        this.discount = ((this.offer / 100) * this.shopprice);
+        this.discount = Math.round(this.discount);
+        this.cashcollect = Number(this.shopprice) + Number(this.deliveryprice) - Number(this.discount);
+      }
+      else if (this.shopprice == null) {
+
+      }
+      else {
+        let msg = "Discount Is applicable for Above Rs " + this.min_discount + " Only..";
+        this.presentToast(msg);
+        // this.ctoggle = false;
+        //  console.log(this.ctoggle);
+      }
+
+    }
+    else {
+      this.cashcollect = Number(this.shopprice) + Number(this.deliveryprice);
+    }
+    if (this.discount > this.max_cashback) {
+      console.log("Discount is above the cashback limit");
+      this.discount = this.max_cashback;
+    }
   }
   // ******************************-----------Delivery Toggle Action Code----------***************************************
   notify() {
-    console.log(this.toggle);
-    if (this.toggle == true) {
-      // this.getmrp("20");
+    console.log(this.Dtoggle);
+    if (this.Dtoggle == true) {
+      this.getmrp("0");
     }
-    else
-      this.Data = {
-      }
-      // this.deliveryprice=0;
+    else {
+      this.deliveryprice = 0;
+      this.cashcollect = Number(this.shopprice) + Number(this.deliveryprice) - Number(this.discount);
+    }
   }
   // ******************************-----------calculate total shop price ----------****************************************
   getcst() {
@@ -133,9 +179,7 @@ export class DeliveryreportPage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
-
   // **********************************-----------Update Delivery Time if select dismiss----------************************
-
   updatedeltime() {
     if (this.deltime == "Select") {
       this.viewCtrl.dismiss();
@@ -163,7 +207,7 @@ export class DeliveryreportPage {
     var myData = JSON.stringify(this.Data);
     this.http.post(link, myData)
       .subscribe(data => {
-        console.log(data["_body"]);
+        // console.log(data["_body"]);
         this.orderlist = JSON.parse(data["_body"]);
         console.log(this.orderlist);
         // if (this.response.status == "1") {
@@ -187,14 +231,23 @@ export class DeliveryreportPage {
   // ******************************************-----------Get delivery price from DataBase----------***************************************************
   getdeliveryprice() {
     let data = {
-      data: "dummy"
+      mobile: this.customermobile
     }
+    console.log(data);
+    console.log("inside the delivery price");
+    
     var link = 'http://freshcangrocery.in/sppi/delivery_charge.php';
     var myData = JSON.stringify(data);
     this.http.post(link, myData)
       .subscribe(data => {
         console.log(data["_body"]);
-        this.deliverypricelist = JSON.parse(data["_body"]);
+        let responce = JSON.parse(data["_body"]);
+        this.deliverypricelist = responce.delivery_charge;
+        this.offer_used = responce.offer_used;
+        this.max_cashback = responce.max_cashback;
+        this.min_discount = responce.min_discount;
+        this.offer = responce.offer;
+        console.log("delivery............");
         console.log(this.deliverypricelist);
         //  this.deliverypricelist.reverse();
       }, error => {
@@ -205,8 +258,8 @@ export class DeliveryreportPage {
   updatetime() {
     if (this.orderlist == "null") {
       this.order = null;
-    } 
-    if (this.toggle == false) {
+    }
+    if (this.Dtoggle == false) {
       this.deliveryprice = "Free";
     }
     this.Data = {
@@ -215,14 +268,17 @@ export class DeliveryreportPage {
       grocery: this.order,
       mrp: this.mrpprice,
       shop_price: this.shopprice,
-      delivery_price:this.deliveryprice
+      delivery_price: this.deliveryprice,
+      cash_collect: this.cashcollect,
+      discount: this.discount,
+      offer_used: this.offer_used
     };
     console.log(this.Data);
     var link = 'https://www.freshcangrocery.in/sppi/update_del_time.php';
     var myData = JSON.stringify(this.Data);
     this.http.post(link, myData)
       .subscribe(data => {
-        console.log(data["_body"]);
+        // console.log(data["_body"]);
         this.response = JSON.parse(data["_body"]);
         if (this.response.status == "1") {
           console.log('success');

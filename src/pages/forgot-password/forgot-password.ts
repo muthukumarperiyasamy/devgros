@@ -27,7 +27,6 @@ export class ForgotPasswordPage {
 
     console.log(this.forgetData);
     var link = 'https://www.freshcangrocery.in/sppi/forgetpwd.php';
-    
     var myData = JSON.stringify(this.forgetData);
     this.http.post(link, myData)
       .subscribe(data => {

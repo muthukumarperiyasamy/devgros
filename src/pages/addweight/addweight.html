@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <!-- <span showWhen="ios">Cancel</span>  showWhen="android,windows"-->
+        <ion-icon name="md-close" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- text-center -->
+  <ion-row>
+    <ion-col class="rowclr">
+      <ion-label>
+        <b>Weight</b>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="weight" placeholder="200 gm"></ion-input>
+    </ion-col>
+    <ion-col class="rowclr">
+      <ion-label>
+        <b>Price</b>
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="price" placeholder="50"></ion-input>
+    </ion-col>
+    <ion-col class="rowclr">
+        <!-- *ngIf="this.category == 'Discount' " -->
+      <ion-label>
+        <b>shop Price</b>
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="spprice" placeholder="50"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item-sliding *ngFor="let i of volume">
+      <ion-item>
+        <ion-row>
+          <ion-col>Weight:&nbsp;{{i.weight}}</ion-col>
+          <ion-col>Price:&nbsp; &#8377;{{i.price}}</ion-col>
+          <ion-col >shopprice:&nbsp; &#8377;{{i.spprice}}</ion-col>
+          <!-- *ngIf="this.category == 'Discount' " -->
+          <ion-col *ngIf="this.category == 'Discount' ">discount:&nbsp;{{i.discount}} %</ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button (click)="delete(i)">
+          <ion-icon name="trash"></ion-icon>
+          delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <button ion-button block class="submit-button" type="submit" (click)="add()">Add Next Weight</button>
+
+</ion-content>
+<ion-footer *ngIf="this.volume.length != 0 ">
+  <ion-toolbar>
+    <ion-grid no-margin no-padding>
+      <ion-row no-margin no-padding>
+        <ion-col text-center>
+          <button ion-button block icon-left (click)="cancel()">
+            <ion-icon name="md-cloud-upload"></ion-icon>
+            <b>Update weight category</b>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

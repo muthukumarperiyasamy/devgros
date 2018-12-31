@@ -19,8 +19,8 @@
     </ion-row>
 
   </div>
-  <!-- <h6>Not Received 4 digit OTP? -->
-  <!-- <a>Resend OTP</a></h6> -->
+  <h6>Not Received 4 digit OTP?
+  <a (click)="otptoast()">Resend OTP </a></h6>
   <ion-row responsive-sm>
     <ion-col >
       <button ion-button block round [disabled]="!logina.valid"(click)="confirm()">Confirm OTP</button>

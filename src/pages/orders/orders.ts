@@ -18,6 +18,8 @@ export class OrdersPage {
   public save: any;
   public shopprice: any;
   public deliveryprice: any;
+  public discountprice: any;
+  public cashcollect: any;
   constructor(
     public navCtrl: NavController,
     public http: Http,
@@ -41,6 +43,8 @@ export class OrdersPage {
     this.mrp = this.item.mrp;
     this.shopprice = this.item.shop_price;
     this.deliveryprice = this.item.delivery_price;
+    this.discountprice = this.item.discount_price;
+    this.cashcollect = this.item.cash_collect;
     this.orderlist = this.item.grocery;
     console.log(this.orderlist);
     console.log(this.can);

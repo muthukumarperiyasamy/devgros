@@ -1,14 +1,15 @@
 page-addproduct {
     .add{
+    background-color:#dad6d6;
     // background-image: url("../assets/images/22.jpg");
     // background-size: cover;
   .label-md{
     margin:0px;
 }.item-select .label{
-    color:#fff;
+    color:#555555;
 }
 .item-md.item-block .item-inner{
-    padding-left:10px;
+    // padding-left:10px;
 }
 .text-input{
     margin:13px 1px;
@@ -35,19 +36,19 @@ page-addproduct {
 }
 ion-item {
 	border-radius: 30px !important;
-	padding-left: 30px !important;
+	padding-left: 10px !important;
 	font-size: 0.9em;
-	background-color:rgba(0, 0, 0, 0.8) !important;
+	background-color:#f1f1f1 !important;
 	margin-bottom: 10px !important;
 	border-bottom: none !important;
-    color: $white !important;
+    color: $black !important;
     $select-md-placeholder-color:$white;
 }
 input::placeholder{
-	color: $white !important;
+	color: $black !important;
 }
 textarea::placeholder{
-	color: $white !important;
+	color: $black !important;
 }
 
 ion-input{

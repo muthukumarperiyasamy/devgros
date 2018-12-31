@@ -34,8 +34,8 @@ export class DataServiceProvider {
       var myData = JSON.stringify(Data);
       this.http.post(link, myData)
         .subscribe(data => {
-          // console.log(data["_body"]);
           this.productsData = JSON.parse(data["_body"]);
+          console.log(this.productsData);
           this.product=[];
           this.productsData.forEach(element => {
             // console.log(element);

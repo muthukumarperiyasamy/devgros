@@ -62,10 +62,10 @@ export class SignupPage {
         this.response = JSON.parse(data["_body"]);
         if (this.response.status == "1") {
           console.log('success');
-          this.presentToast('Signup Success')
+          // this.presentToast('Signup Success')
           window["plugins"].OneSignal.sendTag('type',"Shop");
           window["plugins"].OneSignal.sendTag('mobile', this.signup.value.mobileno);
-          localStorage.setItem('mobile', this.signup.value.mobileno);
+          localStorage.setItem('mobile1', this.signup.value.mobileno);
           localStorage.setItem('username', this.signup.value.name);
           localStorage.setItem('togglex', "true");
           localStorage.setItem('shoptype', '0');

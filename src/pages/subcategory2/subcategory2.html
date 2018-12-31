@@ -1,16 +1,20 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>{{ this.sbcategory }} </ion-title>
-      <ion-buttons end>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  
-  
-  <ion-content>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ this.sbcategory }} </ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="nomsg" *ngIf="this.products.length == 0">
+    <p>No Products to be Displayed</p>
+  </div>
+  <div  *ngIf="this.products.length != 0">
     <ion-row>
       <ion-col>
         <ion-searchbar [(ngModel)]="terms" class="light-searchbar"></ion-searchbar>
@@ -24,7 +28,7 @@
         <ion-row *ngFor="let p of products | search : terms ">
           <ion-col col-2>
             <img src="{{p.image_url}}">
-            <!-- </ion-thumbnail> -->  
+            <!-- </ion-thumbnail> -->
           </ion-col>
           <ion-col col-7>
             <h6 style="margin-bottom:0;margin-top:15px;margin-left:5px;" text-wrap>
@@ -39,22 +43,24 @@
         </ion-row>
       </ion-item>
     </ion-list>
-    <!-- <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+
+  </div>
+  <!-- <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
      <ion-infinite-scroll-content></ion-infinite-scroll-content>
    </ion-infinite-scroll> -->
-  </ion-content>
-  
-  <ion-footer>
-    <ion-toolbar>
-      <ion-grid no-margin no-padding>
-        <ion-row no-margin no-padding>
-          <ion-col text-center>
-            <button ion-button block icon-left (click)="update()">
-              <ion-icon name="md-cloud-upload"></ion-icon>
-              <b>Update shop list</b>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
-  </ion-footer>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid no-margin no-padding>
+      <ion-row no-margin no-padding>
+        <ion-col text-center>
+          <button ion-button block icon-left (click)="update()">
+            <ion-icon name="md-cloud-upload"></ion-icon>
+            <b>Update shop list</b>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -36,7 +36,7 @@ export class Otppage {
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad Otppage');
-    this.mobile = localStorage.getItem('mobile');
+    this.mobile = localStorage.getItem('mobile1');
     
   }
   confirm() {
@@ -57,7 +57,8 @@ export class Otppage {
           console.log('success');
           // window["plugins"].OneSignal.sendTag('clientcode',this.response.client_code);
           this.presentToast('Thank you ! OTP Verification Completed !')
-        // /  localStorage.setItem('hasSeenTutorial', "true");
+          localStorage.setItem('mobile', this.mobile);
+          // /  localStorage.setItem('hasSeenTutorial', "true");
           this.navCtrl.setRoot(this.main_page.component);
         }
         else if (this.response.status == "0") {
@@ -73,6 +74,9 @@ export class Otppage {
         console.log("Oooops!");
       });
 
+  }
+  otptoast(){
+    this.presentToast('Your One Time Password for Freshcan & Grocery Shopee is 2648 !')
   }
   presentToast(msg) {
     let toast = this.toastCtrl.create({

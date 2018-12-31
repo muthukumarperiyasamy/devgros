@@ -1,8 +1,21 @@
 page-subcategory2 {
-    .cart{
+    .nomsg{
+        p{
+            padding-top:15px !important;
+        }
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 15px  !important;
+        background-color:$theme-color-1; 
+        color:#fff;   
+        height:55px;
+        margin: 15px;
+        
+     }
+      .cart{
         font-size:1.8em;
         padding-right: 10px;
-    }
+      }
         .item-md
         { 
             padding-left:10px;

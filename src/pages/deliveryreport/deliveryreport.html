@@ -21,10 +21,6 @@
           <ion-icon class="description-icon" name="contact"></ion-icon>
           <p class="description-text one-line">{{this.name}}</p>
         </ion-col>
-        <!-- <ion-col col-4 class="item-description">
-          <ion-icon class="description-icon  fa fa-tint"></ion-icon>
-          <p class="description-text one-line">{{this.cans}} cans</p>
-        </ion-col> -->
       </ion-row>
     </ion-item>
     <!-- *****************************************Headers of orders**************************************************** -->
@@ -115,25 +111,81 @@
            <ion-icon class="star fa fa-star"></ion-icon>&nbsp; Include Can cost with Shop Price
         </ion-item-divider>
       </ion-card> -->
+      <!-- *********************************** Apply Copon********************************************************** -->
+      <div *ngIf="this.type =='new'">
+        <ion-row class="mrp items" *ngIf="this.orderlist !='null'">
+          <ion-col>
+            <ion-item>
+              <ion-label>
+                Apply Discount&nbsp;&nbsp;
+              </ion-label>
+              <ion-toggle *ngIf="this.type =='new'" [(ngModel)]="this.ctoggle" (ionChange)="notifydiscount($event)"></ion-toggle>
+            </ion-item>
+          </ion-col>
+          <ion-col class="right" *ngIf="this.ctoggle == true">
+            <p text-right> ( {{offer}} %)  &nbsp;&nbsp; &#8377; {{discount}} </p>
+          </ion-col>
+          <ion-col class="right" *ngIf="this.ctoggle == false">
+            <p text-right> &#8377; 0 </p>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf="this.type !='new'">
+        <ion-row *ngIf="this.orderlist !='null'">
+          <ion-col>
+            <ion-item>
+              <ion-label >
+                Apply Discount
+              </ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col class="right">
+            <p text-right> &#8377; {{discount}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
       <!-- *********************************** Delivery Charges********************************************************** -->
       <ion-row class="mrp items" *ngIf="this.orderlist !='null'">
-        <ion-col>
+        <ion-col class="right">
           <ion-item>
-            <ion-label>
+            <ion-label >
               Delivery charges
             </ion-label>
-            <ion-toggle checked="true" [(ngModel)]="this.toggle" (ionChange)="notify($event)"></ion-toggle>
+            <ion-toggle *ngIf="this.type =='new'" [(ngModel)]="this.Dtoggle" (ionChange)="notify($event)"></ion-toggle>
           </ion-item>
         </ion-col>
-        <ion-col *ngIf="this.toggle == true">
+        <ion-col class="right" *ngIf="this.Dtoggle == true">
           <!-- *ngIf="this.type =='new'" -->
           <!-- <ion-label>&nbsp;</ion-label> -->
           <!-- <ion-input readonly style="width: 75px;" type="number" [(ngModel)]="deliveryprice"></ion-input> -->
-          <p> &#8377; {{deliveryprice}}</p>
+          <p text-right> &#8377; {{deliveryprice}}</p>
         </ion-col>
-        <ion-col *ngIf="this.toggle == false">
-          <p>Free</p>
+        <ion-col class="right" *ngIf="this.Dtoggle == false">
+          <p text-right>Free</p>
         </ion-col>
+      </ion-row>
+      <!-- *********************************** Collect Cash ********************************************************** -->
+      <ion-row class="mrp items" *ngIf="this.orderlist !='null'">
+        <!-- <ion-col col-2>
+text-right
+        </ion-col> -->
+        <ion-col>
+          <ion-item>
+            <ion-label >
+              Collect cash
+            </ion-label>
+            <!-- <ion-toggle checked="true" [(ngModel)]="this.Dtoggle" (ionChange)="notify($event)"></ion-toggle> -->
+          </ion-item>
+        </ion-col>
+        <ion-col class="right size">
+          <!-- *ngIf="this.type =='new'" -->
+          <!-- <ion-label>&nbsp;</ion-label> -->
+          <!-- <ion-input readonly style="width: 75px;" type="number" [(ngModel)]="deliveryprice"></ion-input> -->
+          <h3 text-right> &#8377; <b>{{cashcollect}}</b></h3>
+        </ion-col>
+        <!-- <ion-col *ngIf="this.Dtoggle == false">
+        <p>Free</p>
+      </ion-col> -->
       </ion-row>
     </ion-card>
     <!-- ************************************** Address Of the Customer ******************************************************* -->

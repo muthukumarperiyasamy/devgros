@@ -12,7 +12,8 @@ export class Subcategory2Page {
   terms: string = '';
   sortName: string = 'default';
   filterData: any;
-  products: any;
+  products: Array<any> = [];
+  product: any;
   item: number = 1;
   cartProduct: any;
   modifiedCost: any;
@@ -42,7 +43,10 @@ export class Subcategory2Page {
     this.loading.present();
     this.dataService.getProducts(this.responed)
       .then((response) => {
-        this.products = response;
+        this.product = response;
+        this.product.forEach(element => {
+          this.products.push(element);
+        });
         this.loading.dismiss();
         console.log(this.products);
        // console.log(this.products.length);

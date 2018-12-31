@@ -31,6 +31,7 @@ import { PaymentstatusPage } from '../pages/paymentstatus/paymentstatus';
 import { OrdersPage } from '../pages/orders/orders';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { CommentsPage } from '../pages/comments/comments';
+import { AddweightPage } from '../pages/addweight/addweight';
 
 import { DataServiceProvider } from '../providers/data-service/data-service';
 
@@ -88,6 +89,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     OrdersPage,
     FeedbackPage,
     CommentsPage,
+    AddweightPage,
 
     PreloadImage,
     ShowHideContainer,
@@ -134,6 +136,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     OrdersPage,
     FeedbackPage,
     CommentsPage,
+    AddweightPage,
   ],
   providers: [
     StatusBar,

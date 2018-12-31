@@ -12,13 +12,21 @@ page-subcategory {
             // padding-left: 10px; 
             padding-bottom: 25px;
             padding-left: 5px;
-            img{
+            padding-top: 5px;
+            // text-align: center;
+        img{
                 height:55px;
                 width:55px;
                 // background-color: $theme-color-2;
                 // border-radius: 50%;
             }
         }
+    }
+    .offersimg{
+        height:85px !important;
+        width:85px !important;
+        box-shadow: 1px 1px 25px #949496;
+        border-radius:15px;
     }
     .swiper-slide img{
         height:180px;
@@ -31,7 +39,7 @@ page-subcategory {
     }
     .item-md p{
         font-size:12px;
-        text-align: left;
+        // text-align: left;
     }
     .side-logo{
         font-size:5px;

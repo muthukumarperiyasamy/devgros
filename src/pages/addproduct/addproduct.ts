@@ -5,6 +5,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { CategoryPage } from '../category/category';
 import { Slides } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AddweightPage } from '../addweight/addweight';
 
 @Component({
   selector: 'page-addproduct',
@@ -23,6 +24,8 @@ export class AddproductPage {
   public productname: any;
   public producttype: any;
   public weight: any = "unit/packet";
+  public spprice: any ;
+  public mrp: any ;
   public volume: any;
   currentIndex = 0;
 
@@ -47,9 +50,20 @@ export class AddproductPage {
     console.log('ionViewDidLoad AddproductPage');
     this.productname = "";
     this.weight = "";
-    this.volume = "";
+    this.volume =[];
     this.base64Image = "";
     this.subcategory = "";
+    this.mrp = "";
+    this.spprice = "";
+   
+    console.log(this.productname);
+    console.log(this.weight);
+    console.log(this.volume);
+    console.log(this.base64Image);
+    console.log(this.subcategory);
+    console.log(this.mrp);
+    console.log(this.spprice);
+    
   }
 
 
@@ -60,8 +74,18 @@ export class AddproductPage {
 
   //******************************************----------------call the Upload details to database------------------************************************
   update() {
-    if (this.volume == undefined) {
-      this.volume = ['1 pcs']
+    if (this.volume == "") {
+      let discount = ((this.mrp - this.spprice) * 100) / this.mrp;
+      discount = Math.round(discount) //  6
+      let data = [{
+        weight: "1 "+this.weight,
+        mrp_price: this.mrp,
+        price: this.spprice,
+        discount: discount
+      }]
+      this.volume = data
+      console.log(this.volume);
+      
     }
     console.log(this.productname);
     console.log(this.weight);
@@ -157,7 +181,28 @@ export class AddproductPage {
       console.log(this.subcategory);
     });
   }
-
+  //******************************************----------------Modal Page for addweight -----------------************************************
+  addweight() {
+    let data = {
+      category: this.subcategory,
+      volume:this.volume
+    }
+    if (this.subcategory != "") {
+      var modal = this.modalCtrl.create(AddweightPage, data);
+      modal.present();
+      modal.onDidDismiss((data) => {
+        console.log(data);
+        if (data == undefined) {
+          this.volume = [];
+        } else {
+          this.volume = data;
+        } console.log(this.volume);
+      });
+    }
+    else {
+      this.presentToast('Please select  Category');
+    }
+  }
   //******************************************----------------UPload details for Database -----------------************************************
   upload() {
     // var rand = Math.floor(Math.random() * 20) + 1;

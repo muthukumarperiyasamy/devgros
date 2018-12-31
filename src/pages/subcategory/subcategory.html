@@ -8,13 +8,37 @@
 </ion-header>
 <ion-content>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Bakery</b></h5>
+    <h5 text-center>
+      <b>Rise & Shine, it's Offer time</b>
+    </h5>
+    <ion-row>
+      <ion-slides spaceBetween="3" class="category" slidesPerView="3">
+        <ion-slide (click)="product('Trending','Trending offers')">
+          <img class="offersimg" src="assets/images/1.jpg">
+          <p text-wrap>Trending</p>
+        </ion-slide>
+        <ion-slide (click)="product('Discount','Discount offers')">
+          <img class="offersimg" src="assets/images/7.jpg">
+          <p text-wrap>Discount</p>
+        </ion-slide>
+        <ion-slide (click)="product('Premium','Premium offers')">
+          <img  class="offersimg" src="assets/images/3.jpg">
+          <p text-wrap>Premium</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-item>
+
+  <ion-item no-margin no-padding>
+    <h5 text-center>
+      <b>Bakery</b>
+    </h5>
     <ion-row>
       <!-- <ion-col col-1>
         <ion-icon name="arrow-back" class="btnPrev" (click)="prev()"></ion-icon>
       </ion-col>-->
       <!-- <ion-col col-11>  -->
-      <ion-slides  spaceBetween="18"  pager="true"  class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="4" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Dairy','Diary')">
           <img src="assets/icon/Dairy.svg">
           <p text-wrap>Dairy</p>
@@ -52,10 +76,12 @@
 
   </ion-item>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Beauty</b></h5>
+    <h5 text-center>
+      <b>Beauty</b>
+    </h5>
 
     <ion-row>
-      <ion-slides  spaceBetween="4"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="4" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Bath_Face_Hand_Wash','Bath, Face & Hand Wash')">
           <img src="assets/icon/Bath, Face & Hand Wash.svg">
           <p text-wrap>Bath, Face & Hand Wash</p>
@@ -109,9 +135,11 @@
     </ion-row>
   </ion-item>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Food Grain</b></h5>
+    <h5 text-center>
+      <b>Food Grain</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Salt_Sugar_Jaggery','Salt, Sugar & Jaggery')">
           <img src="assets/icon/Salt, Sugar & Jaggery.svg">
           <p text-wrap>Salt, Sugar & Jaggery</p>
@@ -132,6 +160,10 @@
           <img src="assets/icon/Dals & Pulses.svg">
           <p text-wrap>Dals & Pulses</p>
         </ion-slide>
+        <ion-slide (click)="product('Dry_Fruits','Dry Fruits')">
+          <img src="assets/icon/Dry Fruits.svg">
+          <p text-wrap>Dry Fruits</p>
+        </ion-slide>     
         <ion-slide (click)="product('Edible_Oils_Ghee','Edible Oils & Ghee')">
           <img src="assets/icon/Edible Oils & Ghee.svg">
           <p text-wrap>Edible Oils & Ghee</p>
@@ -149,9 +181,11 @@
     </ion-row>
   </ion-item>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Beverages</b></h5>
+    <h5 text-center>
+      <b>Beverages</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Tea','Tea')">
           <img src="assets/icon/Tea.svg">
           <p text-wrap>Tea</p>
@@ -181,9 +215,11 @@
     </ion-row>
   </ion-item>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Gourmet & World Food</b></h5>
+    <h5 text-center>
+      <b>Gourmet & World Food</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Chocolates_Biscuits','Chocolates & Biscuits')">
           <img src="assets/icon/Chocolates & Biscuits.svg">
           <p text-wrap>Chocolates & Biscuits</p>
@@ -225,9 +261,11 @@
     </ion-row>
   </ion-item>
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Kitchen</b></h5>
+    <h5 text-center>
+      <b>Kitchen</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Appliances_Electricals','Appliances & Electricals')">
           <img src="assets/icon/Appliances & Electricals.svg">
           <p text-wrap>Appliances & Electricals</p>
@@ -278,9 +316,11 @@
   </ion-item>
 
   <ion-item no-margin no-padding>
-    <h5  text-center><b>Cleaning & Household</b></h5>
+    <h5 text-center>
+      <b>Cleaning & Household</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Disposables_Garbage_Bag','Disposables, Garbage Bag')">
           <img src="assets/icon/Disposables, Garbage Bag.svg">
           <p text-wrap>Disposables, Garbage Bag</p>
@@ -313,10 +353,12 @@
       <!-- <ion-icon name="ios-arrow-forward-outline" class="btnNext" (click)="next()"></ion-icon> -->
     </ion-row>
   </ion-item>
-  <ion-item no-margin no-padding >
-    <h5  text-center><b>Fruits & Vegetables</b></h5>
+  <ion-item no-margin no-padding>
+    <h5 text-center>
+      <b>Fruits & Vegetables</b>
+    </h5>
     <ion-row>
-      <ion-slides  spaceBetween="18"  pager="true" class="category" slidesPerView="3.5">
+      <ion-slides spaceBetween="18" pager="true" class="category" slidesPerView="3.5">
         <ion-slide (click)="product('Fresh_Vegetables','Fresh Vegetables')">
           <img src="assets/icon/Fresh Vegetables.svg">
           <p text-wrap>Fresh Vegetables</p>
